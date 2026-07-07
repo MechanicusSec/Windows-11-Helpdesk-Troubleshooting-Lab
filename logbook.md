@@ -1062,3 +1062,41 @@ This file acts as a quick reference for commands used throughout the lab.
 
 No screenshot was added for this part because the notes file itself is the main evidence.
 
+---
+
+## 2026-07-07 — Part 11: Final report and GitHub polish
+
+### Goal
+
+Create the final project report and polish the repository documentation for portfolio review.
+
+The purpose of this part was to summarize the full Windows 11 Helpdesk Troubleshooting Lab in one final report and make the README reflect the completed project state.
+
+### Work completed
+
+* Created `docs/final-report.md`.
+* Summarized the project purpose and lab scenario.
+* Documented the lab environment.
+* Summarized all completed troubleshooting areas from Part 1 to Part 11.
+* Documented the practical helpdesk and junior sysadmin skills demonstrated.
+* Listed the main tools used during the project.
+* Summarized key troubleshooting findings.
+* Documented the evidence collected throughout the lab.
+* Added privacy and safety notes.
+* Added lessons learned and final conclusion.
+* Updated the README progress table to mark Part 11 as complete.
+* Added the final report file to the README documentation/results section.
+* Updated the README project structure to show `docs/final-report.md` and `notes/helpdesk-command-notes.md`.
+
+### File created
+
+| File | Description |
+| --- | --- |
+| `docs/final-report.md` | Final report summarizing the Windows 11 Helpdesk Troubleshooting Lab, completed work, skills demonstrated, evidence collected, privacy notes and conclusion. |
+
+### Notes
+
+This part completes the main Windows 11 Helpdesk Troubleshooting Lab.
+
+No screenshot was added for this part yet because the final report and updated documentation are the main deliverables. A final clean `git status` screenshot can still be added later if desired.
+

@@ -26,7 +26,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Virtualization | VMware-based Windows 11 VM |
 | Lab user | Local lab account |
 | Documentation tools | VS Code, Markdown, Git and GitHub |
-| Evidence | Screenshots and results notes |
+| Evidence | Screenshots, results notes, command notes, logbook and final report |
 
 ## Completed parts
 
@@ -42,14 +42,16 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 8 | Local users and groups | Complete |
 | Part 9 | Printer troubleshooting simulation | Complete |
 | Part 10 | Helpdesk command notes | Complete |
-| Part 11 | Final report and GitHub polish | Planned |
+| Part 11 | Final report and GitHub polish | Complete |
 
 ## Project structure
 
 ```text
 Windows-11-Helpdesk-Troubleshooting-Lab/
 ├── docs/
+│   └── final-report.md
 ├── notes/
+│   └── helpdesk-command-notes.md
 ├── results/
 ├── screenshots/
 ├── scripts/
@@ -122,6 +124,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 
 | File | Description |
 | --- | --- |
+| docs/final-report.md | Final project report summarizing the lab environment, completed troubleshooting areas, evidence, lessons learned and conclusion. |
 | notes/helpdesk-command-notes.md | Command reference notes for Windows helpdesk troubleshooting. |
 | results/windows-11-baseline-results.txt | Written summary of Windows 11 baseline verification findings. |
 | results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
@@ -187,6 +190,8 @@ This lab demonstrates:
 * Technical documentation.
 * Screenshot evidence collection.
 * Helpdesk command reference documentation.
+* Final report writing.
+* GitHub repository polish.
 * Git and GitHub project workflow.
 
 ## Tools and commands used
@@ -194,6 +199,7 @@ This lab demonstrates:
 | Tool or command | Purpose |
 | --- | --- |
 | `notes/helpdesk-command-notes.md` | Markdown command reference file used to collect Windows helpdesk commands from the lab. |
+| `docs/final-report.md` | Final Markdown report summarizing the full lab and portfolio value. |
 | VS Code | Used to edit project documentation and manage files. |
 | Git | Used for local version control. |
 | GitHub | Used to publish the portfolio project. |
@@ -315,6 +321,14 @@ Part 10 created a practical command reference for the lab.
 The file `notes/helpdesk-command-notes.md` collects useful Windows helpdesk commands in one place, grouped by topic. It includes baseline commands, disk commands, network commands, Windows Update and service commands, Event Viewer commands, local users and groups commands, printer commands, useful Windows tools and Git commands.
 
 This makes the project easier to review and reuse because the commands are documented separately from the chronological logbook.
+
+### Final report and GitHub polish
+
+Part 11 completed the final project documentation.
+
+The file `docs/final-report.md` summarizes the project goal, lab environment, completed troubleshooting areas, skills demonstrated, evidence collected, privacy notes, lessons learned and conclusion.
+
+This makes the repository easier to review as a portfolio project because the final report gives a high-level overview without requiring the reader to inspect every logbook entry first.
 
 ## Privacy notes
 

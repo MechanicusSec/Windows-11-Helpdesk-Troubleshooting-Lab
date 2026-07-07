@@ -40,7 +40,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 5 | Windows Update troubleshooting | Complete |
 | Part 6 | Windows service troubleshooting | Complete |
 | Part 7 | Event Viewer investigation | Complete |
-| Part 8 | Local users and groups | Planned |
+| Part 8 | Local users and groups | Complete |
 | Part 9 | Printer troubleshooting simulation | Planned |
 | Part 10 | Helpdesk command notes | Planned |
 | Part 11 | Final report and GitHub polish | Planned |
@@ -102,6 +102,14 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-09e-event-viewer-event-details-tab.png | Shows the Details tab for the same Warning event. |
 | screenshots/screenshot-09f-event-viewer-filter-cleared.png | Shows the System log after clearing the filter. |
 | screenshots/screenshot-09g-event-viewer-powershell-system-log.png | Shows PowerShell verification of System log access. |
+| screenshots/screenshot-10a-local-users-list-gui.png | Shows the local Users list in Computer Management. |
+| screenshots/screenshot-10b-local-user-properties.png | Shows the LabUser account properties. |
+| screenshots/screenshot-10c-local-user-member-of.png | Shows LabUser group membership. |
+| screenshots/screenshot-10d-local-groups-list-gui.png | Shows the local Groups list in Computer Management. |
+| screenshots/screenshot-10e-administrators-group-members.png | Shows members of the local Administrators group. |
+| screenshots/screenshot-10f-powershell-get-localuser.png | Shows PowerShell verification of local users. |
+| screenshots/screenshot-10g-powershell-get-localgroup.png | Shows PowerShell verification of local groups. |
+| screenshots/screenshot-10h-powershell-administrators-members.png | Shows PowerShell verification of Administrators group membership. |
 
 ## Results
 
@@ -113,6 +121,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | results/windows-11-update-troubleshooting-results.txt | Written summary of Windows Update troubleshooting checks and findings. |
 | results/windows-11-service-troubleshooting-results.txt | Written summary of Windows service troubleshooting checks and findings. |
 | results/windows-11-event-viewer-investigation-results.txt | Written summary of Event Viewer investigation checks and findings. |
+| results/windows-11-local-users-groups-results.txt | Written summary of local users and groups checks and findings. |
 
 ## Skills demonstrated
 
@@ -149,6 +158,12 @@ This lab demonstrates:
 * Warning and error event review.
 * Event ID and source identification.
 * PowerShell event log verification.
+* Local user account review.
+* Local group review.
+* Local administrator membership review.
+* Computer Management navigation.
+* Local Users and Groups inspection.
+* PowerShell local account verification.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -201,6 +216,12 @@ This lab demonstrates:
 | System log | Windows log used to review system-level events. |
 | Filter Current Log | Used to filter events by Critical, Error and Warning levels. |
 | `Get-WinEvent -LogName System -MaxEvents 5` | Reads the five newest events from the System log. |
+| Computer Management | Used to access Local Users and Groups. |
+| Local Users and Groups | Used to review local users and groups. |
+| `compmgmt.msc` | Opens Computer Management. |
+| `Get-LocalUser` | Lists local user accounts. |
+| `Get-LocalGroup` | Lists local groups. |
+| `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -247,6 +268,14 @@ Part 7 demonstrated how to investigate Windows logs using Event Viewer.
 The lab showed how to open Event Viewer, review the System log, filter for Critical, Error and Warning events, inspect a Warning event, review both the General and Details tabs, clear the filter and verify log access with PowerShell.
 
 This reflects a practical helpdesk workflow: review logs through the graphical tool first, then use PowerShell to confirm log access and collect command-line evidence.
+
+### Local users and groups
+
+Part 8 demonstrated how to review local user accounts and local groups in Windows 11.
+
+The lab showed how to use Computer Management to inspect local users, check user properties, review group membership, inspect the Administrators group and verify the same information with PowerShell.
+
+This reflects a practical helpdesk workflow: check account and group membership visually first, then use PowerShell for quick confirmation and documentation.
 
 ## Privacy notes
 

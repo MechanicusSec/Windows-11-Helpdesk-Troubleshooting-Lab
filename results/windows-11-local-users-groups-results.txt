@@ -1,0 +1,133 @@
+Windows 11 Local Users and Groups Results
+
+Scenario:
+Local users and groups were reviewed on the Windows 11 lab VM.
+
+Purpose:
+The purpose of this part was to practice inspecting local Windows user accounts and local groups using the graphical Computer Management console first, then verifying the information with PowerShell.
+
+Focus:
+This part focused on GUI-based local account and group review before command-line verification.
+
+GUI tool used:
+Computer Management
+
+Why Computer Management was used:
+Computer Management provides access to several local administration tools, including Local Users and Groups.
+
+Local Users and Groups is useful for reviewing local accounts, account status, local groups and group membership.
+
+GUI path used:
+Start
+Search
+Computer Management
+
+Alternative path:
+Win + R
+compmgmt.msc
+
+Area reviewed:
+System Tools
+Local Users and Groups
+
+Checks performed:
+- Opened Computer Management.
+- Opened Local Users and Groups.
+- Reviewed the local Users list.
+- Opened the LabUser account properties.
+- Reviewed the General tab for the LabUser account.
+- Reviewed the Member Of tab for the LabUser account.
+- Confirmed the LabUser account was a member of the Administrators group.
+- Reviewed the local Groups list.
+- Opened the Administrators group properties.
+- Reviewed members of the Administrators group.
+- Verified local users with PowerShell.
+- Verified local groups with PowerShell.
+- Verified local Administrators group membership with PowerShell.
+
+PowerShell commands used:
+Get-LocalUser
+Get-LocalGroup
+Get-LocalGroupMember Administrators
+
+Command explanations:
+
+Get-LocalUser:
+Lists local user accounts on the computer.
+This command is useful for quickly checking which local accounts exist and whether they are enabled.
+
+Get-LocalGroup:
+Lists local groups on the computer.
+This command is useful for reviewing available local security and permission groups.
+
+Get-LocalGroupMember Administrators:
+Lists members of the local Administrators group.
+This is important because members of Administrators have elevated permissions on the local computer.
+
+GUI tools reviewed:
+
+Computer Management:
+A Windows management console that includes several administrative tools such as Event Viewer, Shared Folders, Local Users and Groups, Device Manager, Disk Management and Services.
+
+Local Users and Groups:
+A Computer Management section used to view and manage local users and local groups.
+
+Users:
+Shows local user accounts on the computer.
+
+Groups:
+Shows local groups on the computer.
+
+User properties:
+Shows account information, account options and group membership.
+
+Member Of tab:
+Shows which groups a local user belongs to.
+
+Administrators group:
+A privileged local group whose members can perform administrative actions on the computer.
+
+Findings:
+- Computer Management opened successfully.
+- Local Users and Groups was available.
+- Local user accounts were visible.
+- The LabUser account properties were reviewed.
+- The LabUser account was shown as a member of the Administrators group.
+- Local groups were visible.
+- The Administrators group properties were reviewed.
+- PowerShell confirmed local users could be listed.
+- PowerShell confirmed local groups could be listed.
+- PowerShell confirmed the Administrators group membership could be reviewed.
+
+Evidence collected:
+- screenshots/screenshot-10a-local-users-list-gui.png
+- screenshots/screenshot-10b-local-user-properties.png
+- screenshots/screenshot-10c-local-user-member-of.png
+- screenshots/screenshot-10d-local-groups-list-gui.png
+- screenshots/screenshot-10e-administrators-group-members.png
+- screenshots/screenshot-10f-powershell-get-localuser.png
+- screenshots/screenshot-10g-powershell-get-localgroup.png
+- screenshots/screenshot-10h-powershell-administrators-members.png
+
+Troubleshooting interpretation:
+Local user and group membership is important during helpdesk troubleshooting because it affects permissions, software installation, system changes, and access to administrative tools.
+
+The Administrators group should be reviewed carefully because members have elevated control over the local computer.
+
+The LabUser account being a member of Administrators is acceptable in this lab because the VM is used for local testing and administrative troubleshooting.
+
+In a real production environment, administrative membership should be limited and reviewed according to least privilege principles.
+
+Troubleshooting conclusion:
+The Local Users and Groups review was completed successfully.
+
+The lab demonstrated how to inspect local users, inspect local groups, review account group membership and verify the same information with PowerShell.
+
+Helpdesk lesson:
+A technician should understand both the GUI and PowerShell methods for reviewing local accounts and group membership.
+
+The GUI is useful for navigation and visual inspection.
+PowerShell is useful for quick verification and documentation.
+
+Final result:
+Local users, local groups and Administrators group membership were reviewed and documented successfully.

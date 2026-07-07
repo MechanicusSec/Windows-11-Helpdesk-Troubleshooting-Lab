@@ -757,3 +757,139 @@ This part focused on Event Viewer as a helpdesk investigation tool.
 
 The reviewed warning event should not be treated as proof of an active issue by itself. Event Viewer findings should be interpreted together with user symptoms, current system behavior and other troubleshooting evidence.
 
+---
+
+## 2026-07-07 — Part 8: Local users and groups
+
+### Goal
+
+Practice reviewing local Windows users and groups using the Computer Management graphical console first, followed by PowerShell verification.
+
+The purpose of this part was to learn where local user accounts and local groups are managed, how to inspect account properties, how to review group membership and how to verify local users and groups from PowerShell.
+
+### Work completed
+
+* Opened Computer Management.
+* Opened Local Users and Groups.
+* Reviewed the local Users list.
+* Opened the LabUser account properties.
+* Reviewed the General tab for the LabUser account.
+* Reviewed the Member Of tab for the LabUser account.
+* Confirmed the LabUser account was a member of the Administrators group.
+* Reviewed the local Groups list.
+* Opened the Administrators group properties.
+* Reviewed members of the Administrators group.
+* Verified local users with PowerShell.
+* Verified local groups with PowerShell.
+* Verified local Administrators group membership with PowerShell.
+* Created a local users and groups results note in the results folder.
+
+### GUI paths used
+
+```text
+Start
+→ Search
+→ Computer Management
+```
+
+```text
+Win + R
+→ compmgmt.msc
+```
+
+### Area reviewed
+
+| Area | Purpose |
+| --- | --- |
+| Computer Management | Windows management console used for local administrative tools. |
+| Local Users and Groups | Used to review local user accounts and local groups. |
+| Users | Shows local user accounts on the computer. |
+| Groups | Shows local groups on the computer. |
+| Administrators group | Shows accounts with local administrative privileges. |
+
+### PowerShell commands used
+
+```powershell
+Get-LocalUser
+Get-LocalGroup
+Get-LocalGroupMember Administrators
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-LocalUser` | Lists local user accounts on the computer. |
+| `Get-LocalGroup` | Lists local groups on the computer. |
+| `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Computer Management | Opened successfully. |
+| Local Users and Groups | Opened successfully. |
+| Users list | Local user accounts were visible. |
+| LabUser properties | LabUser account properties were reviewed. |
+| Member Of tab | LabUser group membership was reviewed. |
+| LabUser group membership | LabUser was shown as a member of Administrators. |
+| Groups list | Local groups were visible. |
+| Administrators group | Administrators group members were reviewed. |
+| PowerShell user check | Local users were listed with `Get-LocalUser`. |
+| PowerShell group check | Local groups were listed with `Get-LocalGroup`. |
+| PowerShell admin group check | Administrators group membership was listed with `Get-LocalGroupMember Administrators`. |
+
+### Troubleshooting conclusion
+
+The Local Users and Groups review was completed successfully.
+
+This part demonstrated how to inspect local user accounts, review local groups, check account group membership and verify the same information using PowerShell.
+
+The LabUser account was shown as a member of the Administrators group. This is acceptable in the lab VM because the account is used for local administrative troubleshooting and documentation.
+
+### Screenshot evidence
+
+#### Local users list
+
+![Local users list](screenshots/screenshot-10a-local-users-list-gui.png)
+
+#### Local user properties
+
+![Local user properties](screenshots/screenshot-10b-local-user-properties.png)
+
+#### Local user Member Of tab
+
+![Local user Member Of tab](screenshots/screenshot-10c-local-user-member-of.png)
+
+#### Local groups list
+
+![Local groups list](screenshots/screenshot-10d-local-groups-list-gui.png)
+
+#### Administrators group members
+
+![Administrators group members](screenshots/screenshot-10e-administrators-group-members.png)
+
+#### PowerShell Get-LocalUser
+
+![PowerShell Get-LocalUser](screenshots/screenshot-10f-powershell-get-localuser.png)
+
+#### PowerShell Get-LocalGroup
+
+![PowerShell Get-LocalGroup](screenshots/screenshot-10g-powershell-get-localgroup.png)
+
+#### PowerShell Administrators group members
+
+![PowerShell Administrators group members](screenshots/screenshot-10h-powershell-administrators-members.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-local-users-groups-results.txt | Contains the written local users and groups findings and conclusion. |
+
+### Notes
+
+This part focused on local Windows account and group review.
+
+Administrative group membership should always be reviewed carefully. In this lab, LabUser being a member of Administrators is acceptable because the VM is used for local testing and administrative troubleshooting.
+

@@ -38,7 +38,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 3 | Network troubleshooting | Complete |
 | Part 4 | Disk space troubleshooting | Complete |
 | Part 5 | Windows Update troubleshooting | Complete |
-| Part 6 | Windows service troubleshooting | Planned |
+| Part 6 | Windows service troubleshooting | Complete |
 | Part 7 | Event Viewer investigation | Planned |
 | Part 8 | Local users and groups | Planned |
 | Part 9 | Printer troubleshooting simulation | Planned |
@@ -90,6 +90,11 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-07e-windows-update-troubleshooter-location.png | Shows the Windows Update troubleshooter location. |
 | screenshots/screenshot-07f-windows-update-services.png | Shows Windows Update-related services checked with PowerShell. |
 | screenshots/screenshot-07g-windows-update-after-restart.png | Shows Windows Update after restarting the VM. |
+| screenshots/screenshot-08a-print-spooler-service-running-gui.png | Shows Print Spooler running in the Services console. |
+| screenshots/screenshot-08b-print-spooler-properties-running.png | Shows Print Spooler properties while running. |
+| screenshots/screenshot-08c-print-spooler-service-stopped-gui.png | Shows Print Spooler stopped from the GUI. |
+| screenshots/screenshot-08d-print-spooler-service-restored-gui.png | Shows Print Spooler restored from the GUI. |
+| screenshots/screenshot-08e-print-spooler-powershell-verification.png | Shows PowerShell verification of the Print Spooler service. |
 
 ## Results
 
@@ -99,6 +104,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
 | results/windows-11-disk-space-troubleshooting-results.txt | Written summary of disk space troubleshooting checks and cleanup results. |
 | results/windows-11-update-troubleshooting-results.txt | Written summary of Windows Update troubleshooting checks and findings. |
+| results/windows-11-service-troubleshooting-results.txt | Written summary of Windows service troubleshooting checks and findings. |
 
 ## Skills demonstrated
 
@@ -124,6 +130,11 @@ This lab demonstrates:
 * Optional updates review.
 * Windows Update troubleshooter location.
 * Windows service verification.
+* Windows service troubleshooting.
+* Services console navigation.
+* Print Spooler service management.
+* GUI-based service stop/start workflow.
+* PowerShell service verification.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -167,6 +178,10 @@ This lab demonstrates:
 | `Get-Service bits` | Checks Background Intelligent Transfer Service. |
 | `Get-Service cryptsvc` | Checks Cryptographic Services. |
 | `Get-Service msiserver` | Checks Windows Installer service. |
+| Services console | Used to view and manage Windows background services. |
+| Print Spooler | Windows service used to manage print jobs and printer queues. |
+| `services.msc` | Opens the Windows Services management console. |
+| `Get-Service Spooler` | Checks the current status of the Print Spooler service. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -197,6 +212,14 @@ Part 5 demonstrated a GUI-first Windows Update troubleshooting workflow.
 The lab showed how to review the Windows Update main page, update history, advanced options, optional updates and the Windows Update troubleshooter location. PowerShell was then used to verify related services.
 
 This reflects a practical helpdesk workflow: start where the user is, then use command-line tools for confirmation and deeper troubleshooting.
+
+### Windows service troubleshooting
+
+Part 6 demonstrated a GUI-first Windows service troubleshooting workflow.
+
+The lab showed how to open the Services console, locate Print Spooler, inspect its properties, stop the service, start it again and verify the final state with PowerShell.
+
+This reflects a practical helpdesk workflow: use the graphical tool to understand and manage the service, then use PowerShell to confirm the result.
 
 ## Privacy notes
 

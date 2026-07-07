@@ -1,0 +1,107 @@
+Windows 11 Service Troubleshooting Results
+
+Scenario:
+Windows service troubleshooting checks were performed on the Windows 11 lab VM.
+
+Purpose:
+The purpose of this part was to practice identifying, stopping, starting and verifying a Windows service using the graphical Services console first, then confirming the result with PowerShell.
+
+Focus:
+This part focused on GUI-based service management before command-line verification.
+
+Service used:
+Print Spooler
+
+Why Print Spooler was used:
+Print Spooler is a common Windows service involved in printing and print queue management.
+It is commonly checked during helpdesk troubleshooting when users report printer problems, stuck print jobs or printer queue issues.
+
+GUI path used:
+Start
+Search
+Services
+
+Alternative path:
+Win + R
+services.msc
+
+Checks performed:
+- Opened the Services management console.
+- Located the Print Spooler service.
+- Reviewed the Print Spooler running state.
+- Opened the Print Spooler properties window.
+- Stopped the Print Spooler service using the GUI.
+- Confirmed the service showed a stopped state.
+- Started the Print Spooler service again using the GUI.
+- Confirmed the service returned to a running state.
+- Verified the final service state with PowerShell.
+
+PowerShell command used:
+Get-Service Spooler
+
+Command explanation:
+
+Get-Service Spooler:
+Checks the current status of the Print Spooler service.
+
+The display name in the Services console is:
+Print Spooler
+
+The service name used by PowerShell is:
+Spooler
+
+This is important because Windows services often have both a display name and a service name.
+
+GUI tool reviewed:
+
+Services:
+The Services management console is used to view and manage Windows background services.
+It shows service names, descriptions, statuses, startup types and service properties.
+
+Print Spooler properties:
+The properties window shows service details such as service name, display name, description, startup type and current service status.
+It also provides Start and Stop buttons for basic service control.
+
+Findings:
+- Print Spooler was found in the Services console.
+- Print Spooler was initially running.
+- Print Spooler properties were reviewed.
+- The service was stopped successfully using the GUI.
+- The service was started again successfully using the GUI.
+- PowerShell confirmed the Print Spooler service was running after restoration.
+
+Evidence collected:
+- screenshots/screenshot-08a-print-spooler-service-running-gui.png
+- screenshots/screenshot-08b-print-spooler-properties-running.png
+- screenshots/screenshot-08c-print-spooler-service-stopped-gui.png
+- screenshots/screenshot-08d-print-spooler-service-restored-gui.png
+- screenshots/screenshot-08e-print-spooler-powershell-verification.png
+
+Skipped optional step:
+The optional PowerShell restart command was not performed.
+
+Reason:
+The main learning goal was to practice GUI-based service management first, then verify the final result with PowerShell.
+The service had already been stopped and started successfully through the Services console.
+
+Troubleshooting interpretation:
+Stopping and starting a service is a common helpdesk troubleshooting step.
+For Print Spooler, this can help with stuck print queues, printer jobs that will not process or printer-related errors.
+
+The GUI method is useful when guiding users or junior technicians through a visible Windows tool.
+PowerShell is useful for quick verification and documentation.
+
+Troubleshooting conclusion:
+The Windows service troubleshooting workflow was completed successfully.
+
+The lab demonstrated how to locate a service, inspect its properties, stop it, start it again and verify the final running state.
+
+Helpdesk lesson:
+A technician should understand both the graphical Services console and the PowerShell method for checking services.
+
+The GUI helps with navigation and user guidance.
+PowerShell helps with verification, speed and repeatability.
+
+Final result:
+The Print Spooler service was stopped and restored successfully.
+The final service state was verified with PowerShell.

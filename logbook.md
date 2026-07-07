@@ -508,3 +508,114 @@ This part demonstrated how to start with the normal Windows Settings interface b
 This part focused more on GUI navigation because helpdesk technicians often need to guide users through Settings before using command-line verification.
 
 The registry-based restart-required check was skipped intentionally.
+
+---
+
+## 2026-07-07 — Part 6: Windows service troubleshooting lab
+
+### Goal
+
+Practice Windows service troubleshooting using the normal Services graphical console first, followed by PowerShell verification.
+
+The purpose of this part was to learn where Windows services are managed, how to inspect a service, how to stop and start it safely, and how to verify the final service state.
+
+### Work completed
+
+* Opened the Services management console.
+* Located the Print Spooler service.
+* Reviewed the Print Spooler running state.
+* Opened the Print Spooler properties window.
+* Stopped the Print Spooler service using the GUI.
+* Confirmed the service showed a stopped state.
+* Started the Print Spooler service again using the GUI.
+* Confirmed the service returned to a running state.
+* Verified the final Print Spooler service state with PowerShell.
+* Created a Windows service troubleshooting results note in the results folder.
+* Skipped the optional PowerShell restart step because the GUI stop/start workflow was already completed.
+
+### GUI paths used
+
+```text
+Start
+→ Search
+→ Services
+```
+
+```text
+Win + R
+→ services.msc
+```
+
+### Service used
+
+| Service | Purpose |
+| --- | --- |
+| Print Spooler | Manages print jobs and printer queues in Windows. |
+
+### PowerShell command used
+
+```powershell
+Get-Service Spooler
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-Service Spooler` | Checks the current status of the Print Spooler service. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Services console | Services management console was opened successfully. |
+| Print Spooler location | Print Spooler was found in the services list. |
+| Initial state | Print Spooler was running. |
+| Properties review | Print Spooler properties window was reviewed. |
+| Stop test | Print Spooler was stopped successfully from the GUI. |
+| Start test | Print Spooler was started again successfully from the GUI. |
+| PowerShell verification | PowerShell confirmed the Print Spooler service state after restoration. |
+| Optional PowerShell restart | Skipped intentionally because GUI stop/start was already completed. |
+
+### Troubleshooting conclusion
+
+The Windows service troubleshooting process was completed successfully.
+
+This part demonstrated how to locate a Windows service, inspect its properties, stop it, start it again and verify the final state with PowerShell.
+
+Print Spooler is a useful helpdesk example because printer issues are common in desktop support, especially when print jobs are stuck or printer queues stop responding.
+
+### Screenshot evidence
+
+#### Print Spooler running in Services
+
+![Print Spooler running in Services](screenshots/screenshot-08a-print-spooler-service-running-gui.png)
+
+#### Print Spooler properties while running
+
+![Print Spooler properties running](screenshots/screenshot-08b-print-spooler-properties-running.png)
+
+#### Print Spooler stopped in GUI
+
+![Print Spooler stopped in GUI](screenshots/screenshot-08c-print-spooler-service-stopped-gui.png)
+
+#### Print Spooler restored in GUI
+
+![Print Spooler restored in GUI](screenshots/screenshot-08d-print-spooler-service-restored-gui.png)
+
+#### Print Spooler PowerShell verification
+
+![Print Spooler PowerShell verification](screenshots/screenshot-08e-print-spooler-powershell-verification.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-service-troubleshooting-results.txt | Contains the written Windows service troubleshooting findings and conclusion. |
+
+### Notes
+
+This part focused on GUI-based service troubleshooting because helpdesk technicians often need to guide users or junior technicians through the normal Windows interface.
+
+The optional PowerShell restart step was skipped intentionally because the Print Spooler service was already stopped and started successfully through the Services console.
+

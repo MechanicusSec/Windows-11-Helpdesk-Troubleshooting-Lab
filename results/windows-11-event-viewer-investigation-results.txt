@@ -1,0 +1,135 @@
+Windows 11 Event Viewer Investigation Results
+
+Scenario:
+Event Viewer investigation checks were performed on the Windows 11 lab VM.
+
+Purpose:
+The purpose of this part was to practice reviewing Windows event logs using Event Viewer first, then verifying log access with PowerShell.
+
+Focus:
+This part focused on GUI-based log investigation before command-line verification.
+
+GUI tool used:
+Event Viewer
+
+Why Event Viewer was used:
+Event Viewer is used to review Windows logs related to system activity, application issues, service events, driver warnings, update problems, shutdowns, restarts and security-related events.
+
+Helpdesk technicians use Event Viewer when investigating system problems such as crashes, service failures, update failures, login problems, driver issues or unexplained warnings and errors.
+
+GUI path used:
+Start
+Search
+Event Viewer
+
+Alternative path:
+Win + R
+eventvwr.msc
+
+Log reviewed:
+Windows Logs
+System
+
+Why the System log was reviewed:
+The System log records Windows system-level events.
+This can include service events, driver events, startup and shutdown events, network adapter events, update-related events and hardware-related warnings.
+
+Checks performed:
+- Opened Event Viewer.
+- Opened Windows Logs.
+- Selected the System log.
+- Reviewed normal System log entries.
+- Filtered the System log for Critical, Error and Warning entries.
+- Opened a Warning event.
+- Reviewed the General tab of the event.
+- Reviewed the Details tab of the same event.
+- Cleared the filter to return the System log to normal view.
+- Verified System log access with PowerShell.
+
+PowerShell command used:
+Get-WinEvent -LogName System -MaxEvents 5
+
+Command explanation:
+
+Get-WinEvent:
+Reads Windows event logs.
+
+-LogName System:
+Tells PowerShell to read the System log.
+
+-MaxEvents 5:
+Limits the output to the five newest events so the result stays readable.
+
+Event reviewed:
+Source: e1i68x64
+Event ID: 27
+Level: Warning
+Message: Network link is disconnected.
+
+Interpretation:
+The selected warning showed that the network link was disconnected at a specific time.
+
+In a lab VM, this type of warning can appear when the VM network adapter reconnects, the VM starts, the network service resets, or the virtual network link changes state.
+
+This was useful for the lab because it demonstrated how Event Viewer can show system-level warnings with source, event ID, level, time and message information.
+
+General tab:
+The General tab showed the human-readable event message and important metadata such as log name, source, event ID, level, time and computer name.
+
+Details tab:
+The Details tab showed structured technical event data.
+This view is useful for deeper investigation, reporting, searching for event details and comparing exact event data.
+
+Filter used:
+Critical
+Error
+Warning
+
+Why filtering was used:
+Filtering helps reduce normal informational noise and allows a technician to focus on events that may be more relevant during troubleshooting.
+
+Clear filter:
+The filter was cleared after reviewing the event.
+This is good practice because leaving filters enabled can hide normal log entries during later troubleshooting.
+
+Evidence collected:
+- screenshots/screenshot-09a-event-viewer-open.png
+- screenshots/screenshot-09b-event-viewer-system-log.png
+- screenshots/screenshot-09c-event-viewer-system-filtered-warning-error.png
+- screenshots/screenshot-09d-event-viewer-event-details.png
+- screenshots/screenshot-09e-event-viewer-event-details-tab.png
+- screenshots/screenshot-09f-event-viewer-filter-cleared.png
+- screenshots/screenshot-09g-event-viewer-powershell-system-log.png
+
+Findings:
+- Event Viewer opened successfully.
+- Windows Logs was expanded successfully.
+- The System log was opened successfully.
+- System events were visible.
+- The System log was filtered for Critical, Error and Warning events.
+- A Warning event was opened and reviewed.
+- The General tab showed a readable warning message.
+- The Details tab showed structured event data.
+- The filter was cleared after review.
+- PowerShell confirmed that the System log could be accessed with Get-WinEvent.
+
+Troubleshooting interpretation:
+Event Viewer is useful because it provides a timeline of system activity and warnings.
+
+The selected warning was related to a network link disconnect event.
+This does not automatically mean there is an active network problem, especially in a virtual machine lab environment.
+It should be interpreted together with other evidence such as current network connectivity, IP configuration and service status.
+
+Troubleshooting conclusion:
+The Event Viewer investigation workflow was completed successfully.
+
+The lab demonstrated how to open Event Viewer, review the System log, filter for important event levels, inspect an event, compare the General and Details tabs, clear filters and verify log access with PowerShell.
+
+Helpdesk lesson:
+A technician should not treat every warning or error as a confirmed problem.
+
+Event Viewer is an investigation tool.
+Events should be reviewed in context, compared with user symptoms and supported by additional checks.
+
+Final result:
+The Windows 11 System log was reviewed, a warning event was investigated, the filter was cleared and PowerShell confirmed that event log access was working.

@@ -39,7 +39,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 4 | Disk space troubleshooting | Complete |
 | Part 5 | Windows Update troubleshooting | Complete |
 | Part 6 | Windows service troubleshooting | Complete |
-| Part 7 | Event Viewer investigation | Planned |
+| Part 7 | Event Viewer investigation | Complete |
 | Part 8 | Local users and groups | Planned |
 | Part 9 | Printer troubleshooting simulation | Planned |
 | Part 10 | Helpdesk command notes | Planned |
@@ -95,6 +95,13 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-08c-print-spooler-service-stopped-gui.png | Shows Print Spooler stopped from the GUI. |
 | screenshots/screenshot-08d-print-spooler-service-restored-gui.png | Shows Print Spooler restored from the GUI. |
 | screenshots/screenshot-08e-print-spooler-powershell-verification.png | Shows PowerShell verification of the Print Spooler service. |
+| screenshots/screenshot-09a-event-viewer-open.png | Shows Event Viewer opened in Windows 11. |
+| screenshots/screenshot-09b-event-viewer-system-log.png | Shows the System log selected in Event Viewer. |
+| screenshots/screenshot-09c-event-viewer-system-filtered-warning-error.png | Shows the System log filtered for Critical, Error and Warning events. |
+| screenshots/screenshot-09d-event-viewer-event-details.png | Shows the General tab for a Warning event. |
+| screenshots/screenshot-09e-event-viewer-event-details-tab.png | Shows the Details tab for the same Warning event. |
+| screenshots/screenshot-09f-event-viewer-filter-cleared.png | Shows the System log after clearing the filter. |
+| screenshots/screenshot-09g-event-viewer-powershell-system-log.png | Shows PowerShell verification of System log access. |
 
 ## Results
 
@@ -105,6 +112,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | results/windows-11-disk-space-troubleshooting-results.txt | Written summary of disk space troubleshooting checks and cleanup results. |
 | results/windows-11-update-troubleshooting-results.txt | Written summary of Windows Update troubleshooting checks and findings. |
 | results/windows-11-service-troubleshooting-results.txt | Written summary of Windows service troubleshooting checks and findings. |
+| results/windows-11-event-viewer-investigation-results.txt | Written summary of Event Viewer investigation checks and findings. |
 
 ## Skills demonstrated
 
@@ -135,6 +143,12 @@ This lab demonstrates:
 * Print Spooler service management.
 * GUI-based service stop/start workflow.
 * PowerShell service verification.
+* Event Viewer investigation.
+* Windows System log review.
+* Event log filtering.
+* Warning and error event review.
+* Event ID and source identification.
+* PowerShell event log verification.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -182,6 +196,11 @@ This lab demonstrates:
 | Print Spooler | Windows service used to manage print jobs and printer queues. |
 | `services.msc` | Opens the Windows Services management console. |
 | `Get-Service Spooler` | Checks the current status of the Print Spooler service. |
+| Event Viewer | Used to review Windows event logs. |
+| `eventvwr.msc` | Opens Event Viewer. |
+| System log | Windows log used to review system-level events. |
+| Filter Current Log | Used to filter events by Critical, Error and Warning levels. |
+| `Get-WinEvent -LogName System -MaxEvents 5` | Reads the five newest events from the System log. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -220,6 +239,14 @@ Part 6 demonstrated a GUI-first Windows service troubleshooting workflow.
 The lab showed how to open the Services console, locate Print Spooler, inspect its properties, stop the service, start it again and verify the final state with PowerShell.
 
 This reflects a practical helpdesk workflow: use the graphical tool to understand and manage the service, then use PowerShell to confirm the result.
+
+### Event Viewer investigation
+
+Part 7 demonstrated how to investigate Windows logs using Event Viewer.
+
+The lab showed how to open Event Viewer, review the System log, filter for Critical, Error and Warning events, inspect a Warning event, review both the General and Details tabs, clear the filter and verify log access with PowerShell.
+
+This reflects a practical helpdesk workflow: review logs through the graphical tool first, then use PowerShell to confirm log access and collect command-line evidence.
 
 ## Privacy notes
 

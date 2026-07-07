@@ -619,3 +619,141 @@ This part focused on GUI-based service troubleshooting because helpdesk technici
 
 The optional PowerShell restart step was skipped intentionally because the Print Spooler service was already stopped and started successfully through the Services console.
 
+---
+
+## 2026-07-07 — Part 7: Event Viewer investigation
+
+### Goal
+
+Practice Windows log investigation using Event Viewer first, followed by PowerShell verification.
+
+The purpose of this part was to learn where Windows logs are located, how to review the System log, how to filter warnings and errors, how to inspect event details, and how to verify log access with PowerShell.
+
+### Work completed
+
+* Opened Event Viewer.
+* Expanded Windows Logs.
+* Opened the System log.
+* Reviewed normal System log entries.
+* Filtered the System log for Critical, Error and Warning events.
+* Opened a Warning event.
+* Reviewed the General tab of the event.
+* Reviewed the Details tab of the same event.
+* Cleared the filter after review.
+* Verified System log access with PowerShell.
+* Created an Event Viewer investigation results note in the results folder.
+
+### GUI paths used
+
+```text
+Start
+→ Search
+→ Event Viewer
+```
+
+```text
+Win + R
+→ eventvwr.msc
+```
+
+### Log reviewed
+
+| Log | Purpose |
+| --- | --- |
+| Windows Logs → System | Shows system-level Windows events such as service events, driver warnings, restarts, shutdowns, network adapter events and hardware-related warnings. |
+
+### Filter used
+
+| Event level | Purpose |
+| --- | --- |
+| Critical | Shows serious events that may indicate major system problems. |
+| Error | Shows events where something failed. |
+| Warning | Shows events that may need attention but are not always active problems. |
+
+### Event reviewed
+
+| Field | Detail |
+| --- | --- |
+| Log Name | System |
+| Source | e1i68x64 |
+| Event ID | 27 |
+| Level | Warning |
+| Message | Network link is disconnected. |
+
+### PowerShell command used
+
+```powershell
+Get-WinEvent -LogName System -MaxEvents 5
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-WinEvent` | Reads Windows event logs. |
+| `-LogName System` | Selects the System log. |
+| `-MaxEvents 5` | Shows only the five newest events. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Event Viewer | Opened successfully. |
+| System log | Opened successfully. |
+| Event filtering | System log was filtered for Critical, Error and Warning events. |
+| Warning event | A network link disconnected warning was reviewed. |
+| General tab | Human-readable event information was reviewed. |
+| Details tab | Structured event data was reviewed. |
+| Clear filter | Filter was cleared after investigation. |
+| PowerShell verification | System log access was confirmed with `Get-WinEvent`. |
+
+### Troubleshooting conclusion
+
+The Event Viewer investigation process was completed successfully.
+
+This part demonstrated how to use Event Viewer to inspect Windows logs, filter for important event levels, review event details and verify log access using PowerShell.
+
+The selected warning event showed a network link disconnected message. In a lab VM, this type of event may happen when the virtual network adapter reconnects or when the VM network state changes.
+
+### Screenshot evidence
+
+#### Event Viewer open
+
+![Event Viewer open](screenshots/screenshot-09a-event-viewer-open.png)
+
+#### System log
+
+![Event Viewer System log](screenshots/screenshot-09b-event-viewer-system-log.png)
+
+#### Filtered System log
+
+![Event Viewer filtered System log](screenshots/screenshot-09c-event-viewer-system-filtered-warning-error.png)
+
+#### Event details General tab
+
+![Event Viewer event details](screenshots/screenshot-09d-event-viewer-event-details.png)
+
+#### Event details Details tab
+
+![Event Viewer event Details tab](screenshots/screenshot-09e-event-viewer-event-details-tab.png)
+
+#### Filter cleared
+
+![Event Viewer filter cleared](screenshots/screenshot-09f-event-viewer-filter-cleared.png)
+
+#### PowerShell System log verification
+
+![Event Viewer PowerShell System log verification](screenshots/screenshot-09g-event-viewer-powershell-system-log.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-event-viewer-investigation-results.txt | Contains the written Event Viewer investigation findings and conclusion. |
+
+### Notes
+
+This part focused on Event Viewer as a helpdesk investigation tool.
+
+The reviewed warning event should not be treated as proof of an active issue by itself. Event Viewer findings should be interpreted together with user symptoms, current system behavior and other troubleshooting evidence.
+

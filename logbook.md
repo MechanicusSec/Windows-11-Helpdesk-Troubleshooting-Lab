@@ -21,11 +21,17 @@ Create the documentation structure for the Windows 11 Helpdesk Troubleshooting L
 
 ### Screenshot evidence
 
-| Screenshot | Description |
-| --- | --- |
-| screenshots/screenshot-01-project-structure.png | Shows the initial project folder structure in VS Code or File Explorer. |
-| screenshots/screenshot-02-initial-git-status.png | Shows the initial Git status with untracked project files before the first commit. |
-| screenshots/screenshot-03-initial-push-complete.png | Shows the repository after the initial push to GitHub. |
+#### Initial project structure
+
+![Initial project structure](screenshots/screenshot-01-project-structure.png)
+
+#### Initial Git status
+
+![Initial Git status](screenshots/screenshot-02-initial-git-status.png)
+
+#### Initial push complete
+
+![Initial push complete](screenshots/screenshot-03-initial-push-complete.png)
 
 ### Notes
 
@@ -114,15 +120,33 @@ start ms-settings:windowsupdate
 
 ### Screenshot evidence
 
-| Screenshot | Description |
-| --- | --- |
-| screenshots/screenshot-04a-windows-11-winver.png | Shows Windows 11 Pro version and OS build in the About Windows dialog. |
-| screenshots/screenshot-04b-windows-11-system-disk-baseline.png | Shows hostname, current lab user, system build information and C: drive disk space. |
-| screenshots/screenshot-04c-windows-11-network-baseline.png | Shows network configuration from `ipconfig /all`. |
-| screenshots/screenshot-04d-windows-11-tpm-secureboot-check.png | Shows TPM status and Secure Boot verification. |
-| screenshots/screenshot-04e-device-manager-clean-baseline.png | Shows Device Manager baseline review. |
-| screenshots/screenshot-04f-windows-update-baseline.png | Shows Windows Update with a security update pending restart. |
-| screenshots/screenshot-04g-windows-update-after-restart.png | Shows Windows Update after restart with the system up to date. |
+#### Windows version
+
+![Windows 11 winver](screenshots/screenshot-04a-windows-11-winver.png)
+
+#### System and disk baseline
+
+![Windows 11 system and disk baseline](screenshots/screenshot-04b-windows-11-system-disk-baseline.png)
+
+#### Network baseline
+
+![Windows 11 network baseline](screenshots/screenshot-04c-windows-11-network-baseline.png)
+
+#### TPM and Secure Boot
+
+![TPM and Secure Boot check](screenshots/screenshot-04d-windows-11-tpm-secureboot-check.png)
+
+#### Device Manager baseline
+
+![Device Manager clean baseline](screenshots/screenshot-04e-device-manager-clean-baseline.png)
+
+#### Windows Update before restart
+
+![Windows Update baseline pending restart](screenshots/screenshot-04f-windows-update-baseline.png)
+
+#### Windows Update after restart
+
+![Windows Update after restart](screenshots/screenshot-04g-windows-update-after-restart.png)
 
 ### Results file
 
@@ -137,3 +161,105 @@ The Windows 11 VM was verified as a working baseline system before troubleshooti
 Windows Update initially showed a pending restart for a security update. After restarting, Windows Update showed the system as up to date. An optional preview update was available, but this was not treated as a required baseline issue.
 
 The lab project files, documentation and Git repository are maintained on the host machine, while troubleshooting checks are performed inside the Windows 11 VM.
+
+---
+
+## 2026-07-06 — Part 3: Network troubleshooting lab
+
+### Goal
+
+Practice basic Windows 11 network troubleshooting using PowerShell and standard helpdesk commands.
+
+The purpose of this part was to check IP configuration, DNS resolution, ICMP ping behavior, HTTP connectivity, HTTPS connectivity and DNS cache flushing.
+
+### Work completed
+
+* Reviewed the Windows 11 VM network configuration with `ipconfig /all`.
+* Tested DNS name resolution with `nslookup microsoft.com`.
+* Tested ICMP connectivity with `ping microsoft.com`.
+* Observed that ping to microsoft.com timed out.
+* Tested HTTP connectivity with `Test-NetConnection microsoft.com -CommonTCPPort HTTP`.
+* Confirmed HTTP TCP connectivity succeeded.
+* Tested HTTPS connectivity with `Test-NetConnection microsoft.com -Port 443`.
+* Confirmed HTTPS TCP connectivity succeeded.
+* Flushed the local DNS resolver cache with `ipconfig /flushdns`.
+* Created a network troubleshooting results note in the results folder.
+
+### Commands used
+
+```powershell
+ipconfig /all
+nslookup microsoft.com
+ping microsoft.com
+Test-NetConnection microsoft.com -CommonTCPPort HTTP
+Test-NetConnection microsoft.com -Port 443
+ipconfig /flushdns
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `ipconfig /all` | Shows detailed network adapter, IP address, gateway, DNS and DHCP information. |
+| `nslookup microsoft.com` | Tests DNS name resolution by resolving microsoft.com to an IP address. |
+| `ping microsoft.com` | Tests ICMP connectivity and packet loss to microsoft.com. |
+| `Test-NetConnection microsoft.com -CommonTCPPort HTTP` | Tests TCP connectivity to microsoft.com on port 80 for HTTP traffic. |
+| `Test-NetConnection microsoft.com -Port 443` | Tests TCP connectivity to microsoft.com on port 443 for HTTPS traffic. |
+| `ipconfig /flushdns` | Clears the local Windows DNS resolver cache. |
+
+### Findings
+
+| Test | Result |
+| --- | --- |
+| IP configuration | VM network configuration reviewed. |
+| DNS lookup | microsoft.com resolved to an IP address. |
+| Ping test | Ping timed out with 100% packet loss. |
+| HTTP test | TCP connection to port 80 succeeded. |
+| HTTPS test | TCP connection to port 443 succeeded. |
+| DNS cache flush | DNS resolver cache flushed successfully. |
+
+### Troubleshooting conclusion
+
+The failed ping test did not indicate a full network outage.
+
+Because DNS resolution worked and TCP connectivity succeeded on both HTTP and HTTPS ports, the most likely explanation is that ICMP ping traffic was blocked or ignored by the remote host or network path.
+
+This shows why helpdesk technicians should not rely on ping alone when troubleshooting network issues.
+
+### Screenshot evidence
+
+#### Network configuration
+
+![Network ipconfig baseline](screenshots/screenshot-05a-network-ipconfig-baseline.png)
+
+#### DNS lookup
+
+![Network DNS lookup](screenshots/screenshot-05b-network-dns-lookup.png)
+
+#### Ping test
+
+![Network ping test](screenshots/screenshot-05c-network-ping-test.png)
+
+#### HTTP connectivity test
+
+![Network HTTP connectivity test](screenshots/screenshot-05d-network-http-connectivity-test.png)
+
+#### HTTPS connectivity test
+
+![Network HTTPS connectivity test](screenshots/screenshot-05e-network-https-connectivity-test.png)
+
+#### DNS cache flush
+
+![Network DNS flush](screenshots/screenshot-05f-network-dns-flush.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-network-troubleshooting-results.txt | Contains the written network troubleshooting findings and conclusion. |
+
+### Notes
+
+This part demonstrated an important helpdesk troubleshooting principle: a failed ping does not always mean the network connection is broken.
+
+The VM could resolve DNS and connect over HTTP and HTTPS even though ICMP ping timed out.

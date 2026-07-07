@@ -35,7 +35,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | --- | --- | --- |
 | Part 1 | Project setup | Complete |
 | Part 2 | Windows 11 baseline verification | Complete |
-| Part 3 | Network troubleshooting | Planned |
+| Part 3 | Network troubleshooting | Complete |
 | Part 4 | Disk space troubleshooting | Planned |
 | Part 5 | Windows Update troubleshooting | Planned |
 | Part 6 | Windows service troubleshooting | Planned |
@@ -72,12 +72,19 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-04e-device-manager-clean-baseline.png | Shows Device Manager baseline review. |
 | screenshots/screenshot-04f-windows-update-baseline.png | Shows Windows Update pending restart state. |
 | screenshots/screenshot-04g-windows-update-after-restart.png | Shows Windows Update after restart with the system up to date. |
+| screenshots/screenshot-05a-network-ipconfig-baseline.png | Shows network adapter and IP configuration from `ipconfig /all`. |
+| screenshots/screenshot-05b-network-dns-lookup.png | Shows DNS lookup test for microsoft.com. |
+| screenshots/screenshot-05c-network-ping-test.png | Shows ping to microsoft.com timing out. |
+| screenshots/screenshot-05d-network-http-connectivity-test.png | Shows successful HTTP TCP connectivity to microsoft.com on port 80. |
+| screenshots/screenshot-05e-network-https-connectivity-test.png | Shows successful HTTPS TCP connectivity to microsoft.com on port 443. |
+| screenshots/screenshot-05f-network-dns-flush.png | Shows the DNS resolver cache being flushed successfully. |
 
 ## Results
 
 | File | Description |
 | --- | --- |
 | results/windows-11-baseline-results.txt | Written summary of Windows 11 baseline verification findings. |
+| results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
 
 ## Skills demonstrated
 
@@ -89,6 +96,10 @@ This lab demonstrates:
 * Windows version and build verification.
 * Disk space investigation.
 * Network configuration review.
+* DNS troubleshooting.
+* ICMP versus TCP connectivity comparison.
+* HTTP and HTTPS port testing.
+* DNS cache flushing.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -112,10 +123,27 @@ This lab demonstrates:
 | `Get-ComputerInfo` | Retrieves Windows system information. |
 | `Get-PSDrive C` | Shows C: drive disk usage. |
 | `ipconfig /all` | Shows detailed network configuration. |
+| `nslookup microsoft.com` | Tests DNS name resolution by resolving a domain name to an IP address. |
+| `ping microsoft.com` | Tests ICMP connectivity and packet loss to a target. |
+| `Test-NetConnection microsoft.com -CommonTCPPort HTTP` | Tests HTTP TCP connectivity on port 80. |
+| `Test-NetConnection microsoft.com -Port 443` | Tests HTTPS TCP connectivity on port 443. |
+| `ipconfig /flushdns` | Clears the local Windows DNS resolver cache. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
 | `start ms-settings:windowsupdate` | Opens Windows Update settings. |
+
+## Key troubleshooting lessons
+
+### Baseline verification
+
+Before troubleshooting, the Windows 11 VM baseline was documented. This confirmed the operating system version, disk status, network configuration, TPM status, Secure Boot status, Device Manager state and Windows Update state.
+
+### Network troubleshooting
+
+Part 3 demonstrated that a failed ping does not always mean the network connection is broken.
+
+In this lab, DNS resolution worked and TCP connectivity succeeded on HTTP port 80 and HTTPS port 443, even though ping to microsoft.com timed out. This showed that ICMP traffic was likely blocked or ignored while normal web connectivity still worked.
 
 ## Privacy notes
 

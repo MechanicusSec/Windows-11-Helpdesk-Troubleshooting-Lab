@@ -263,3 +263,104 @@ This shows why helpdesk technicians should not rely on ping alone when troublesh
 This part demonstrated an important helpdesk troubleshooting principle: a failed ping does not always mean the network connection is broken.
 
 The VM could resolve DNS and connect over HTTP and HTTPS even though ICMP ping timed out.
+
+---
+
+## 2026-07-07 — Part 4: Disk space troubleshooting lab
+
+### Goal
+
+Practice basic Windows 11 disk space troubleshooting using PowerShell and Windows Storage settings.
+
+The purpose of this part was to check C: drive usage, create a safe test file, confirm disk usage behavior, review graphical storage settings and clean up the test data.
+
+### Work completed
+
+* Checked C: drive disk space with `Get-PSDrive C`.
+* Created a temporary test folder at `C:\Temp\HelpdeskDiskTest`.
+* Created a 100 MB test file using `fsutil file createnew`.
+* Confirmed the test file existed with `dir`.
+* Checked disk space after creating the test file.
+* Opened Windows Storage settings with `start ms-settings:storagesense`.
+* Removed the temporary test folder with `Remove-Item`.
+* Confirmed the folder was deleted with `Test-Path`.
+* Checked final disk space after cleanup.
+* Created a disk space troubleshooting results note in the results folder.
+
+### Commands used
+
+```powershell
+Get-PSDrive C
+mkdir C:\Temp\HelpdeskDiskTest
+fsutil file createnew C:\Temp\HelpdeskDiskTest\testfile.bin 104857600
+dir C:\Temp\HelpdeskDiskTest
+Get-PSDrive C
+start ms-settings:storagesense
+Remove-Item C:\Temp\HelpdeskDiskTest -Recurse -Force
+Test-Path C:\Temp\HelpdeskDiskTest
+Get-PSDrive C
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-PSDrive C` | Shows used and free space on the C: drive. |
+| `mkdir C:\Temp\HelpdeskDiskTest` | Creates a temporary folder for the disk test. |
+| `fsutil file createnew C:\Temp\HelpdeskDiskTest\testfile.bin 104857600` | Creates a 100 MB test file to safely simulate disk usage. |
+| `dir C:\Temp\HelpdeskDiskTest` | Lists the test folder contents and confirms the test file exists. |
+| `start ms-settings:storagesense` | Opens Windows Storage settings for graphical disk usage review. |
+| `Remove-Item C:\Temp\HelpdeskDiskTest -Recurse -Force` | Deletes the test folder and all contents inside it. |
+| `Test-Path C:\Temp\HelpdeskDiskTest` | Checks whether the test folder still exists after cleanup. |
+
+### Findings
+
+| Test | Result |
+| --- | --- |
+| Initial disk check | C: drive usage and free space were reviewed. |
+| Test folder creation | Temporary disk test folder was created successfully. |
+| Test file creation | 100 MB test file was created successfully. |
+| Disk check after file creation | Disk usage was checked again after creating the test file. |
+| Storage settings review | Windows Storage settings were opened and reviewed. |
+| Cleanup | Test folder and file were removed successfully. |
+| Final disk check | Disk space was checked again after cleanup. |
+
+### Troubleshooting conclusion
+
+The Windows 11 VM disk space troubleshooting process was completed successfully.
+
+A safe 100 MB test file was created to simulate disk usage, then removed to confirm cleanup. This demonstrated how a helpdesk technician can verify disk usage before and after cleanup activity.
+
+### Screenshot evidence
+
+#### Disk space before test
+
+![Disk space before test](screenshots/screenshot-06a-disk-space-before.png)
+
+#### Test file created
+
+![Disk test file created](screenshots/screenshot-06b-disk-test-file-created.png)
+
+#### Disk space after test file
+
+![Disk space after test file](screenshots/screenshot-06c-disk-space-after-test-file.png)
+
+#### Storage settings review
+
+![Storage settings review](screenshots/screenshot-06d-storage-settings-review.png)
+
+#### Disk space after cleanup
+
+![Disk space after cleanup](screenshots/screenshot-06e-disk-space-after-cleanup.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-disk-space-troubleshooting-results.txt | Contains the written disk space troubleshooting findings and conclusion. |
+
+### Notes
+
+This part demonstrated how to check disk space, safely simulate disk usage and clean up test data.
+
+The test file was intentionally small and created only inside the lab VM.

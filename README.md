@@ -36,7 +36,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 1 | Project setup | Complete |
 | Part 2 | Windows 11 baseline verification | Complete |
 | Part 3 | Network troubleshooting | Complete |
-| Part 4 | Disk space troubleshooting | Planned |
+| Part 4 | Disk space troubleshooting | Complete |
 | Part 5 | Windows Update troubleshooting | Planned |
 | Part 6 | Windows service troubleshooting | Planned |
 | Part 7 | Event Viewer investigation | Planned |
@@ -78,6 +78,11 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-05d-network-http-connectivity-test.png | Shows successful HTTP TCP connectivity to microsoft.com on port 80. |
 | screenshots/screenshot-05e-network-https-connectivity-test.png | Shows successful HTTPS TCP connectivity to microsoft.com on port 443. |
 | screenshots/screenshot-05f-network-dns-flush.png | Shows the DNS resolver cache being flushed successfully. |
+| screenshots/screenshot-06a-disk-space-before.png | Shows C: drive disk space before the disk test. |
+| screenshots/screenshot-06b-disk-test-file-created.png | Shows the 100 MB disk test file created in the temporary test folder. |
+| screenshots/screenshot-06c-disk-space-after-test-file.png | Shows disk space after creating the test file. |
+| screenshots/screenshot-06d-storage-settings-review.png | Shows Windows Storage settings review. |
+| screenshots/screenshot-06e-disk-space-after-cleanup.png | Shows final disk space after deleting the test folder. |
 
 ## Results
 
@@ -85,6 +90,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | --- | --- |
 | results/windows-11-baseline-results.txt | Written summary of Windows 11 baseline verification findings. |
 | results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
+| results/windows-11-disk-space-troubleshooting-results.txt | Written summary of disk space troubleshooting checks and cleanup results. |
 
 ## Skills demonstrated
 
@@ -95,6 +101,10 @@ This lab demonstrates:
 * System baseline verification.
 * Windows version and build verification.
 * Disk space investigation.
+* Disk space troubleshooting.
+* Temporary file creation for testing.
+* Windows Storage settings review.
+* Safe cleanup validation.
 * Network configuration review.
 * DNS troubleshooting.
 * ICMP versus TCP connectivity comparison.
@@ -128,6 +138,12 @@ This lab demonstrates:
 | `Test-NetConnection microsoft.com -CommonTCPPort HTTP` | Tests HTTP TCP connectivity on port 80. |
 | `Test-NetConnection microsoft.com -Port 443` | Tests HTTPS TCP connectivity on port 443. |
 | `ipconfig /flushdns` | Clears the local Windows DNS resolver cache. |
+| `mkdir C:\Temp\HelpdeskDiskTest` | Creates a temporary folder for disk testing. |
+| `fsutil file createnew C:\Temp\HelpdeskDiskTest\testfile.bin 104857600` | Creates a 100 MB test file to simulate disk usage. |
+| `dir C:\Temp\HelpdeskDiskTest` | Lists the contents of the test folder. |
+| `Remove-Item C:\Temp\HelpdeskDiskTest -Recurse -Force` | Deletes the temporary test folder and its contents. |
+| `Test-Path C:\Temp\HelpdeskDiskTest` | Confirms whether the test folder still exists after cleanup. |
+| `start ms-settings:storagesense` | Opens Windows Storage settings. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -144,6 +160,12 @@ Before troubleshooting, the Windows 11 VM baseline was documented. This confirme
 Part 3 demonstrated that a failed ping does not always mean the network connection is broken.
 
 In this lab, DNS resolution worked and TCP connectivity succeeded on HTTP port 80 and HTTPS port 443, even though ping to microsoft.com timed out. This showed that ICMP traffic was likely blocked or ignored while normal web connectivity still worked.
+
+### Disk space troubleshooting
+
+Part 4 demonstrated how to check disk space, safely simulate disk usage and confirm cleanup.
+
+A temporary 100 MB test file was created in `C:\Temp\HelpdeskDiskTest`, disk space was checked before and after the file was created, Windows Storage settings were reviewed, and the test folder was removed. This showed how a helpdesk technician can validate disk usage and cleanup without touching real user data.
 
 ## Privacy notes
 

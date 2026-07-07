@@ -1025,3 +1025,40 @@ This part simulated printer troubleshooting without physical printer hardware.
 
 Microsoft Print to PDF was used as a safe virtual printer. Print Spooler was restarted as a common helpdesk troubleshooting step for printer queue and print job issues.
 
+---
+
+## 2026-07-07 — Part 10: Helpdesk command notes
+
+### Goal
+
+Create a practical command reference for the Windows 11 Helpdesk Troubleshooting Lab.
+
+The purpose of this part was to collect the most useful commands from the lab into one readable notes file that can be reused for helpdesk troubleshooting, documentation and future review.
+
+### Work completed
+
+* Created `notes/helpdesk-command-notes.md`.
+* Documented system baseline commands.
+* Documented disk troubleshooting commands.
+* Documented network troubleshooting commands.
+* Documented Windows Update and service commands.
+* Documented Event Viewer commands.
+* Documented local users and groups commands.
+* Documented printer commands.
+* Documented useful Windows management tools.
+* Documented Git commands used during the project.
+* Updated the README progress table to mark Part 10 as complete.
+* Added the command notes file to the README documentation/results section.
+
+### File created
+
+| File | Description |
+| --- | --- |
+| `notes/helpdesk-command-notes.md` | Practical command reference for Windows helpdesk troubleshooting commands used during the lab. |
+
+### Notes
+
+This file acts as a quick reference for commands used throughout the lab.
+
+No screenshot was added for this part because the notes file itself is the main evidence.
+

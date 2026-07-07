@@ -7,7 +7,6 @@ Windows 11 Helpdesk Troubleshooting Lab is a practical IT support and junior sys
 The lab covers baseline verification, network troubleshooting, disk space checks, Windows Update review, Windows services, Event Viewer investigation, local users and groups, printer troubleshooting simulation and final documentation.
 
 This project uses a safe local lab environment only.
-
 No real user data, production systems, passwords, private files or company devices are used.
 
 ## Scenario
@@ -42,7 +41,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 7 | Event Viewer investigation | Complete |
 | Part 8 | Local users and groups | Complete |
 | Part 9 | Printer troubleshooting simulation | Complete |
-| Part 10 | Helpdesk command notes | Planned |
+| Part 10 | Helpdesk command notes | Complete |
 | Part 11 | Final report and GitHub polish | Planned |
 
 ## Project structure
@@ -123,6 +122,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 
 | File | Description |
 | --- | --- |
+| notes/helpdesk-command-notes.md | Command reference notes for Windows helpdesk troubleshooting. |
 | results/windows-11-baseline-results.txt | Written summary of Windows 11 baseline verification findings. |
 | results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
 | results/windows-11-disk-space-troubleshooting-results.txt | Written summary of disk space troubleshooting checks and cleanup results. |
@@ -186,12 +186,14 @@ This lab demonstrates:
 * Restart and update completion validation.
 * Technical documentation.
 * Screenshot evidence collection.
+* Helpdesk command reference documentation.
 * Git and GitHub project workflow.
 
 ## Tools and commands used
 
 | Tool or command | Purpose |
 | --- | --- |
+| `notes/helpdesk-command-notes.md` | Markdown command reference file used to collect Windows helpdesk commands from the lab. |
 | VS Code | Used to edit project documentation and manage files. |
 | Git | Used for local version control. |
 | GitHub | Used to publish the portfolio project. |
@@ -305,6 +307,14 @@ Part 9 demonstrated a basic Windows printer troubleshooting workflow.
 The lab showed how to review installed printers, open a print queue, inspect printer properties, restart Print Spooler and verify printer information with PowerShell.
 
 This reflects a practical helpdesk workflow: check the printer visually first, inspect the queue, confirm the spooler service and then use PowerShell for quick verification.
+
+### Helpdesk command notes
+
+Part 10 created a practical command reference for the lab.
+
+The file `notes/helpdesk-command-notes.md` collects useful Windows helpdesk commands in one place, grouped by topic. It includes baseline commands, disk commands, network commands, Windows Update and service commands, Event Viewer commands, local users and groups commands, printer commands, useful Windows tools and Git commands.
+
+This makes the project easier to review and reuse because the commands are documented separately from the chronological logbook.
 
 ## Privacy notes
 

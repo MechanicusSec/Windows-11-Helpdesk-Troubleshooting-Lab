@@ -893,3 +893,135 @@ This part focused on local Windows account and group review.
 
 Administrative group membership should always be reviewed carefully. In this lab, LabUser being a member of Administrators is acceptable because the VM is used for local testing and administrative troubleshooting.
 
+---
+
+## 2026-07-07 — Part 9: Printer troubleshooting simulation
+
+### Goal
+
+Practice a common Windows printer troubleshooting workflow using GUI tools first, followed by PowerShell verification.
+
+The purpose of this part was to learn where printer settings are located, how to inspect installed printers, how to open a print queue, how to review printer properties and how to verify printer-related information with PowerShell.
+
+### Work completed
+
+* Opened Printers & scanners.
+* Reviewed installed printers.
+* Opened Microsoft Print to PDF settings.
+* Opened the print queue.
+* Reviewed printer properties.
+* Checked Print Spooler in Services.
+* Restarted Print Spooler from the Services GUI.
+* Verified Print Spooler status with PowerShell.
+* Listed installed printers with PowerShell.
+* Created a printer troubleshooting results note in the results folder.
+
+### GUI paths used
+
+```text
+Start
+→ Settings
+→ Bluetooth & devices
+→ Printers & scanners
+```
+
+```text
+Start
+→ Search
+→ Printers & scanners
+```
+
+```text
+Start
+→ Search
+→ Services
+```
+
+### Printer reviewed
+
+| Printer | Purpose |
+| --- | --- |
+| Microsoft Print to PDF | Built-in Windows virtual printer used for safe printer troubleshooting practice without physical hardware. |
+
+### PowerShell commands used
+
+```powershell
+Get-Service Spooler
+Get-Printer
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-Service Spooler` | Checks the current status of the Print Spooler service. |
+| `Get-Printer` | Lists installed printers on the computer. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Printers & scanners | Opened successfully. |
+| Installed printers | Installed printers were visible. |
+| Microsoft Print to PDF | Virtual printer was available and selected. |
+| Print queue | Print queue was opened. |
+| Printer properties | Microsoft Print to PDF properties were reviewed. |
+| Print Spooler | Print Spooler was checked in Services. |
+| Spooler restart | Print Spooler was restarted using the GUI. |
+| PowerShell service check | Print Spooler status was verified with `Get-Service Spooler`. |
+| PowerShell printer check | Installed printers were listed with `Get-Printer`. |
+
+### Troubleshooting conclusion
+
+The printer troubleshooting simulation was completed successfully.
+
+This part demonstrated how to inspect printer settings, open the print queue, review printer properties, restart Print Spooler and verify printer-related information with PowerShell.
+
+Microsoft Print to PDF was used because it is a safe built-in virtual printer that does not require physical printer hardware.
+
+### Screenshot evidence
+
+#### Printers & scanners overview
+
+![Printers & scanners overview](screenshots/screenshot-11a-printers-scanners-overview.png)
+
+#### Microsoft Print to PDF selected
+
+![Microsoft Print to PDF selected](screenshots/screenshot-11b-print-to-pdf-selected.png)
+
+#### Print queue open
+
+![Print queue open](screenshots/screenshot-11c-print-queue-open.png)
+
+#### Printer properties or preferences
+
+![Printer properties or preferences](screenshots/screenshot-11d-printer-properties-or-preferences.png)
+
+#### Print Spooler running for printer lab
+
+![Print Spooler running for printer lab](screenshots/screenshot-11e-print-spooler-running-for-printer-lab.png)
+
+#### Print Spooler restarted in GUI
+
+![Print Spooler restarted in GUI](screenshots/screenshot-11f-print-spooler-restarted-gui.png)
+
+#### PowerShell Spooler check
+
+![PowerShell Spooler check](screenshots/screenshot-11g-printer-lab-powershell-spooler-check.png)
+
+#### PowerShell Get-Printer
+
+![PowerShell Get-Printer](screenshots/screenshot-11h-powershell-get-printer.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-printer-troubleshooting-results.txt | Contains the written printer troubleshooting simulation findings and conclusion. |
+
+### Notes
+
+This part simulated printer troubleshooting without physical printer hardware.
+
+Microsoft Print to PDF was used as a safe virtual printer. Print Spooler was restarted as a common helpdesk troubleshooting step for printer queue and print job issues.
+

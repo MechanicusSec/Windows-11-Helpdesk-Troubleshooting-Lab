@@ -41,7 +41,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 6 | Windows service troubleshooting | Complete |
 | Part 7 | Event Viewer investigation | Complete |
 | Part 8 | Local users and groups | Complete |
-| Part 9 | Printer troubleshooting simulation | Planned |
+| Part 9 | Printer troubleshooting simulation | Complete |
 | Part 10 | Helpdesk command notes | Planned |
 | Part 11 | Final report and GitHub polish | Planned |
 
@@ -110,6 +110,14 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-10f-powershell-get-localuser.png | Shows PowerShell verification of local users. |
 | screenshots/screenshot-10g-powershell-get-localgroup.png | Shows PowerShell verification of local groups. |
 | screenshots/screenshot-10h-powershell-administrators-members.png | Shows PowerShell verification of Administrators group membership. |
+| screenshots/screenshot-11a-printers-scanners-overview.png | Shows the Printers & scanners overview page. |
+| screenshots/screenshot-11b-print-to-pdf-selected.png | Shows Microsoft Print to PDF selected. |
+| screenshots/screenshot-11c-print-queue-open.png | Shows the Microsoft Print to PDF queue. |
+| screenshots/screenshot-11d-printer-properties-or-preferences.png | Shows Microsoft Print to PDF properties or preferences. |
+| screenshots/screenshot-11e-print-spooler-running-for-printer-lab.png | Shows Print Spooler running in Services. |
+| screenshots/screenshot-11f-print-spooler-restarted-gui.png | Shows Print Spooler restarted from the GUI. |
+| screenshots/screenshot-11g-printer-lab-powershell-spooler-check.png | Shows PowerShell verification of Print Spooler. |
+| screenshots/screenshot-11h-powershell-get-printer.png | Shows PowerShell listing installed printers. |
 
 ## Results
 
@@ -122,6 +130,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | results/windows-11-service-troubleshooting-results.txt | Written summary of Windows service troubleshooting checks and findings. |
 | results/windows-11-event-viewer-investigation-results.txt | Written summary of Event Viewer investigation checks and findings. |
 | results/windows-11-local-users-groups-results.txt | Written summary of local users and groups checks and findings. |
+| results/windows-11-printer-troubleshooting-results.txt | Written summary of printer troubleshooting simulation checks and findings. |
 
 ## Skills demonstrated
 
@@ -164,6 +173,12 @@ This lab demonstrates:
 * Computer Management navigation.
 * Local Users and Groups inspection.
 * PowerShell local account verification.
+* Printer troubleshooting simulation.
+* Printers & scanners navigation.
+* Print queue review.
+* Printer properties review.
+* Print Spooler troubleshooting.
+* PowerShell printer verification.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -222,6 +237,12 @@ This lab demonstrates:
 | `Get-LocalUser` | Lists local user accounts. |
 | `Get-LocalGroup` | Lists local groups. |
 | `Get-LocalGroupMember Administrators` | Lists members of the local Administrators group. |
+| Printers & scanners | Used to review installed printers and printer settings. |
+| Microsoft Print to PDF | Built-in virtual printer used for safe troubleshooting simulation. |
+| Print queue | Used to review pending or stuck print jobs. |
+| Printer properties | Used to review printer configuration and device settings. |
+| `Get-Service Spooler` | Checks the Print Spooler service status. |
+| `Get-Printer` | Lists installed printers. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -276,6 +297,14 @@ Part 8 demonstrated how to review local user accounts and local groups in Window
 The lab showed how to use Computer Management to inspect local users, check user properties, review group membership, inspect the Administrators group and verify the same information with PowerShell.
 
 This reflects a practical helpdesk workflow: check account and group membership visually first, then use PowerShell for quick confirmation and documentation.
+
+### Printer troubleshooting simulation
+
+Part 9 demonstrated a basic Windows printer troubleshooting workflow.
+
+The lab showed how to review installed printers, open a print queue, inspect printer properties, restart Print Spooler and verify printer information with PowerShell.
+
+This reflects a practical helpdesk workflow: check the printer visually first, inspect the queue, confirm the spooler service and then use PowerShell for quick verification.
 
 ## Privacy notes
 

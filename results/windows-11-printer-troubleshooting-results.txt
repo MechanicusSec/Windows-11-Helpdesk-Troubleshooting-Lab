@@ -1,0 +1,121 @@
+Windows 11 Printer Troubleshooting Simulation Results
+
+Scenario:
+A printer troubleshooting simulation was performed on the Windows 11 lab VM.
+
+Purpose:
+The purpose of this part was to practice a common helpdesk printer troubleshooting workflow without requiring a physical printer.
+
+Focus:
+This part focused on reviewing printer settings, inspecting the print queue, checking printer properties, restarting the Print Spooler service and verifying printer-related information with PowerShell.
+
+GUI tools used:
+Printers & scanners
+Microsoft Print to PDF settings
+Print queue
+Printer properties
+Services
+
+Why Microsoft Print to PDF was used:
+Microsoft Print to PDF is a built-in Windows virtual printer.
+
+It does not require physical printer hardware, but it still allows a technician to inspect printer settings, printer properties and queue-related areas.
+
+GUI path used:
+Start
+Settings
+Bluetooth & devices
+Printers & scanners
+
+Alternative path:
+Start
+Search
+Printers & scanners
+
+Printer reviewed:
+Microsoft Print to PDF
+
+Checks performed:
+- Opened Printers & scanners.
+- Reviewed installed printers.
+- Opened Microsoft Print to PDF settings.
+- Opened the print queue.
+- Reviewed printer properties.
+- Checked Print Spooler in Services.
+- Restarted Print Spooler from the Services GUI.
+- Verified Print Spooler status with PowerShell.
+- Listed installed printers with PowerShell.
+
+PowerShell commands used:
+Get-Service Spooler
+Get-Printer
+
+Command explanations:
+
+Get-Service Spooler:
+Checks the current status of the Print Spooler service.
+
+Print Spooler manages print jobs and printer queues.
+If this service is stopped, printers may disappear, print queues may fail, and print jobs may not process.
+
+Get-Printer:
+Lists printers installed on the computer.
+
+This is useful for quickly checking whether Windows can see installed printers without using the graphical Settings interface.
+
+GUI tools reviewed:
+
+Printers & scanners:
+Used to review installed printers and open printer-specific settings.
+
+Print queue:
+Used to check whether print jobs are pending, stuck or blocking new jobs.
+
+Printer properties:
+Used to review printer configuration, driver-related settings, ports, sharing, advanced options and device features.
+
+Services:
+Used to check and restart the Print Spooler service.
+
+Findings:
+- Printers & scanners opened successfully.
+- Installed printers were visible.
+- Microsoft Print to PDF was available and selected.
+- The print queue was opened.
+- Printer properties were reviewed.
+- Print Spooler was found in Services.
+- Print Spooler was running before the restart.
+- Print Spooler was restarted using the Services GUI.
+- PowerShell confirmed Print Spooler was running after restart.
+- PowerShell listed installed printers with Get-Printer.
+
+Evidence collected:
+- screenshots/screenshot-11a-printers-scanners-overview.png
+- screenshots/screenshot-11b-print-to-pdf-selected.png
+- screenshots/screenshot-11c-print-queue-open.png
+- screenshots/screenshot-11d-printer-properties-or-preferences.png
+- screenshots/screenshot-11e-print-spooler-running-for-printer-lab.png
+- screenshots/screenshot-11f-print-spooler-restarted-gui.png
+- screenshots/screenshot-11g-printer-lab-powershell-spooler-check.png
+- screenshots/screenshot-11h-powershell-get-printer.png
+
+Troubleshooting interpretation:
+Printer troubleshooting often begins by checking whether Windows sees the printer, whether the print queue is stuck, and whether Print Spooler is running.
+
+Restarting Print Spooler is a common first-line troubleshooting step when print jobs are stuck, queues freeze, printers disappear or jobs fail to process.
+
+In this lab, Microsoft Print to PDF was used as a safe virtual printer so printer troubleshooting steps could be practiced without physical hardware.
+
+Troubleshooting conclusion:
+The printer troubleshooting simulation was completed successfully.
+
+The lab demonstrated how to review installed printers, open a print queue, inspect printer properties, restart Print Spooler and verify printer-related information with PowerShell.
+
+Helpdesk lesson:
+A technician should understand both GUI and PowerShell methods for printer troubleshooting.
+
+The GUI is useful for user guidance and visual inspection.
+PowerShell is useful for quick verification and documentation.
+
+Final result:
+Printer settings, print queue behavior, printer properties, Print Spooler status and installed printer information were reviewed and documented successfully.

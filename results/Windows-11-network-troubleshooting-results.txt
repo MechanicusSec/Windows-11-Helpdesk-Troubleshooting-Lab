@@ -1,0 +1,101 @@
+Windows 11 Network Troubleshooting Results
+
+Scenario:
+Basic network troubleshooting checks were performed on the Windows 11 lab VM.
+
+Purpose:
+The purpose of this part was to practice common helpdesk network checks and learn how to separate different network troubleshooting layers:
+- Local IP configuration
+- DNS name resolution
+- ICMP ping behavior
+- HTTP TCP connectivity
+- HTTPS TCP connectivity
+- DNS cache handling
+
+Environment:
+The checks were performed inside the Windows 11 lab VM.
+The project documentation and screenshots were stored on the host machine in the Git project folder.
+
+Commands used:
+ipconfig /all
+nslookup microsoft.com
+ping microsoft.com
+Test-NetConnection microsoft.com -CommonTCPPort HTTP
+Test-NetConnection microsoft.com -Port 443
+ipconfig /flushdns
+
+Command explanations:
+
+ipconfig /all:
+Shows detailed network adapter information, including IPv4 address, subnet mask, default gateway, DNS servers, DHCP status and adapter details.
+This command is commonly used by helpdesk technicians to confirm whether a computer has a valid network configuration.
+
+nslookup microsoft.com:
+Tests DNS name resolution.
+DNS translates human-readable names such as microsoft.com into IP addresses.
+If nslookup works, it usually means DNS is functioning.
+
+ping microsoft.com:
+Tests ICMP connectivity to a target.
+Ping can show packet loss and response time, but some public websites block or ignore ICMP traffic.
+A failed ping does not always mean the internet connection is broken.
+
+Test-NetConnection microsoft.com -CommonTCPPort HTTP:
+Tests TCP connectivity to microsoft.com on port 80.
+Port 80 is used for HTTP web traffic.
+This helps confirm whether web traffic can connect even if ping fails.
+
+Test-NetConnection microsoft.com -Port 443:
+Tests TCP connectivity to microsoft.com on port 443.
+Port 443 is used for HTTPS web traffic.
+This is important because most modern websites use HTTPS.
+
+ipconfig /flushdns:
+Clears the local Windows DNS resolver cache.
+This is useful when DNS results may be old, incorrect or cached from a previous lookup.
+
+Checks performed:
+- Reviewed IP configuration.
+- Reviewed default gateway and DNS server information.
+- Tested DNS name resolution.
+- Tested ICMP connectivity with ping.
+- Tested HTTP TCP connectivity on port 80.
+- Tested HTTPS TCP connectivity on port 443.
+- Flushed the local DNS resolver cache.
+
+Findings:
+- The Windows 11 VM had a valid network configuration.
+- DNS resolution was tested against microsoft.com.
+- microsoft.com resolved to an IP address, which showed that DNS name resolution worked.
+- Ping to microsoft.com timed out with 100% packet loss.
+- HTTP connectivity to microsoft.com on port 80 succeeded.
+- HTTPS connectivity to microsoft.com on port 443 succeeded.
+- DNS cache flush completed successfully.
+
+Evidence collected:
+- screenshots/screenshot-05a-network-ipconfig-baseline.png
+- screenshots/screenshot-05b-network-dns-lookup.png
+- screenshots/screenshot-05c-network-ping-test.png
+- screenshots/screenshot-05d-network-http-connectivity-test.png
+- screenshots/screenshot-05e-network-https-connectivity-test.png
+- screenshots/screenshot-05f-network-dns-flush.png
+
+Troubleshooting conclusion:
+The ping failure did not indicate a full network outage.
+
+DNS resolution worked, and TCP connectivity succeeded on both HTTP port 80 and HTTPS port 443.
+Because of this, the most likely explanation is that ICMP ping traffic was blocked or ignored by the remote host or by a network path between the VM and microsoft.com.
+
+Helpdesk lesson:
+Ping is useful, but it should not be the only network test.
+
+A technician should compare DNS lookup results, ping behavior, TCP port tests and user-facing application behavior before deciding what is actually broken.
+
+In this case, the correct conclusion is:
+- DNS was working.
+- Web connectivity was working.
+- ICMP ping failed.
+- The network was not fully broken.
+
+Final result:
+The Windows 11 VM network troubleshooting checks were completed and documented successfully.

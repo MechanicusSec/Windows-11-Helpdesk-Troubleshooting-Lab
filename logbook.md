@@ -364,3 +364,147 @@ A safe 100 MB test file was created to simulate disk usage, then removed to conf
 This part demonstrated how to check disk space, safely simulate disk usage and clean up test data.
 
 The test file was intentionally small and created only inside the lab VM.
+
+---
+
+## 2026-07-07 — Part 5: Windows Update troubleshooting lab
+
+### Goal
+
+Practice Windows Update troubleshooting using the normal Windows graphical interface first, followed by basic PowerShell service verification.
+
+The purpose of this part was to learn where Windows Update settings are located, how to review update status, how to inspect update history and optional updates, and how to verify related services.
+
+### Work completed
+
+* Opened Windows Update through Settings.
+* Reviewed the main Windows Update status page.
+* Documented a restart-required state.
+* Reviewed Update history.
+* Reviewed Advanced options.
+* Reviewed Optional updates.
+* Located the Windows Update troubleshooter.
+* Checked Windows Update-related services with PowerShell.
+* Restarted the VM to complete the pending update.
+* Checked Windows Update again after restart.
+* Created a Windows Update troubleshooting results note in the results folder.
+* Skipped the registry-based restart-required check intentionally to focus on GUI navigation and service verification.
+
+### GUI paths used
+
+```text
+Start
+→ Settings
+→ Windows Update
+```
+
+```text
+Start
+→ Settings
+→ Windows Update
+→ Update history
+```
+
+```text
+Start
+→ Settings
+→ Windows Update
+→ Advanced options
+```
+
+```text
+Start
+→ Settings
+→ Windows Update
+→ Advanced options
+→ Optional updates
+```
+
+```text
+Start
+→ Settings
+→ System
+→ Troubleshoot
+→ Other troubleshooters
+→ Windows Update
+```
+
+### PowerShell commands used
+
+```powershell
+Get-Service wuauserv
+Get-Service bits
+Get-Service cryptsvc
+Get-Service msiserver
+```
+
+### Command purpose
+
+| Command | Purpose |
+| --- | --- |
+| `Get-Service wuauserv` | Checks the Windows Update service. |
+| `Get-Service bits` | Checks the Background Intelligent Transfer Service used for background downloads. |
+| `Get-Service cryptsvc` | Checks Cryptographic Services, which help verify signatures and certificates. |
+| `Get-Service msiserver` | Checks Windows Installer service status. |
+
+### Findings
+
+| Check | Result |
+| --- | --- |
+| Windows Update main page | Restart required state was observed. |
+| Pending update | Secure Boot Allowed Signature Database (DB) update was pending restart. |
+| Update history | Update history was reviewed. |
+| Advanced options | Advanced update settings were reviewed. |
+| Optional updates | Optional updates page was reviewed. |
+| Troubleshooter | Windows Update troubleshooter location was identified. |
+| Service check | Windows Update-related services were checked with PowerShell. |
+| Restart | VM was restarted to complete the pending update. |
+| After restart | Windows Update was reviewed again after restart. |
+
+### Troubleshooting conclusion
+
+The Windows Update troubleshooting process was completed successfully.
+
+This part demonstrated how to start with the normal Windows Settings interface before using PowerShell for service verification. This is useful for helpdesk work because users usually describe problems from the graphical interface, not from command-line output.
+
+### Screenshot evidence
+
+#### Windows Update main status
+
+![Windows Update main status](screenshots/screenshot-07a-windows-update-main-status.png)
+
+#### Windows Update history
+
+![Windows Update history](screenshots/screenshot-07b-windows-update-history.png)
+
+#### Windows Update advanced options
+
+![Windows Update advanced options](screenshots/screenshot-07c-windows-update-advanced-options.png)
+
+#### Windows Update optional updates
+
+![Windows Update optional updates](screenshots/screenshot-07d-windows-update-optional-updates.png)
+
+#### Windows Update troubleshooter location
+
+![Windows Update troubleshooter location](screenshots/screenshot-07e-windows-update-troubleshooter-location.png)
+
+#### Windows Update services
+
+![Windows Update services](screenshots/screenshot-07f-windows-update-services.png)
+
+#### Windows Update after restart
+
+![Windows Update after restart](screenshots/screenshot-07g-windows-update-after-restart.png)
+
+### Results file
+
+| File | Description |
+| --- | --- |
+| results/windows-11-update-troubleshooting-results.txt | Contains the written Windows Update troubleshooting findings and conclusion. |
+
+### Notes
+
+This part focused more on GUI navigation because helpdesk technicians often need to guide users through Settings before using command-line verification.
+
+The registry-based restart-required check was skipped intentionally.

@@ -37,7 +37,7 @@ The project demonstrates how a helpdesk technician can collect baseline informat
 | Part 2 | Windows 11 baseline verification | Complete |
 | Part 3 | Network troubleshooting | Complete |
 | Part 4 | Disk space troubleshooting | Complete |
-| Part 5 | Windows Update troubleshooting | Planned |
+| Part 5 | Windows Update troubleshooting | Complete |
 | Part 6 | Windows service troubleshooting | Planned |
 | Part 7 | Event Viewer investigation | Planned |
 | Part 8 | Local users and groups | Planned |
@@ -83,6 +83,13 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | screenshots/screenshot-06c-disk-space-after-test-file.png | Shows disk space after creating the test file. |
 | screenshots/screenshot-06d-storage-settings-review.png | Shows Windows Storage settings review. |
 | screenshots/screenshot-06e-disk-space-after-cleanup.png | Shows final disk space after deleting the test folder. |
+| screenshots/screenshot-07a-windows-update-main-status.png | Shows Windows Update main status with restart required. |
+| screenshots/screenshot-07b-windows-update-history.png | Shows Windows Update history. |
+| screenshots/screenshot-07c-windows-update-advanced-options.png | Shows Windows Update advanced options. |
+| screenshots/screenshot-07d-windows-update-optional-updates.png | Shows Windows Update optional updates. |
+| screenshots/screenshot-07e-windows-update-troubleshooter-location.png | Shows the Windows Update troubleshooter location. |
+| screenshots/screenshot-07f-windows-update-services.png | Shows Windows Update-related services checked with PowerShell. |
+| screenshots/screenshot-07g-windows-update-after-restart.png | Shows Windows Update after restarting the VM. |
 
 ## Results
 
@@ -91,6 +98,7 @@ Windows-11-Helpdesk-Troubleshooting-Lab/
 | results/windows-11-baseline-results.txt | Written summary of Windows 11 baseline verification findings. |
 | results/windows-11-network-troubleshooting-results.txt | Written summary of network troubleshooting checks, findings and conclusions. |
 | results/windows-11-disk-space-troubleshooting-results.txt | Written summary of disk space troubleshooting checks and cleanup results. |
+| results/windows-11-update-troubleshooting-results.txt | Written summary of Windows Update troubleshooting checks and findings. |
 
 ## Skills demonstrated
 
@@ -110,6 +118,12 @@ This lab demonstrates:
 * ICMP versus TCP connectivity comparison.
 * HTTP and HTTPS port testing.
 * DNS cache flushing.
+* Windows Update troubleshooting.
+* Windows Settings navigation.
+* Update history review.
+* Optional updates review.
+* Windows Update troubleshooter location.
+* Windows service verification.
 * TPM verification.
 * Secure Boot verification.
 * Device Manager review.
@@ -127,6 +141,11 @@ This lab demonstrates:
 | Git | Used for local version control. |
 | GitHub | Used to publish the portfolio project. |
 | PowerShell | Used to run Windows support and verification commands. |
+| Windows Update Settings | Used to review update status, restart requirements and available updates. |
+| Update history | Used to review installed update history. |
+| Advanced options | Used to review additional Windows Update settings. |
+| Optional updates | Used to review optional drivers, preview updates and non-critical updates. |
+| Windows Update troubleshooter | Built-in troubleshooting tool for update-related problems. |
 | `winver` | Shows Windows version and OS build information. |
 | `hostname` | Shows the computer name. |
 | `whoami` | Shows the current logged-in user. |
@@ -144,6 +163,10 @@ This lab demonstrates:
 | `Remove-Item C:\Temp\HelpdeskDiskTest -Recurse -Force` | Deletes the temporary test folder and its contents. |
 | `Test-Path C:\Temp\HelpdeskDiskTest` | Confirms whether the test folder still exists after cleanup. |
 | `start ms-settings:storagesense` | Opens Windows Storage settings. |
+| `Get-Service wuauserv` | Checks the Windows Update service. |
+| `Get-Service bits` | Checks Background Intelligent Transfer Service. |
+| `Get-Service cryptsvc` | Checks Cryptographic Services. |
+| `Get-Service msiserver` | Checks Windows Installer service. |
 | `Get-Tpm` | Shows TPM status. |
 | `Confirm-SecureBootUEFI` | Checks Secure Boot status. |
 | `devmgmt.msc` | Opens Device Manager. |
@@ -166,6 +189,14 @@ In this lab, DNS resolution worked and TCP connectivity succeeded on HTTP port 8
 Part 4 demonstrated how to check disk space, safely simulate disk usage and confirm cleanup.
 
 A temporary 100 MB test file was created in `C:\Temp\HelpdeskDiskTest`, disk space was checked before and after the file was created, Windows Storage settings were reviewed, and the test folder was removed. This showed how a helpdesk technician can validate disk usage and cleanup without touching real user data.
+
+### Windows Update troubleshooting
+
+Part 5 demonstrated a GUI-first Windows Update troubleshooting workflow.
+
+The lab showed how to review the Windows Update main page, update history, advanced options, optional updates and the Windows Update troubleshooter location. PowerShell was then used to verify related services.
+
+This reflects a practical helpdesk workflow: start where the user is, then use command-line tools for confirmation and deeper troubleshooting.
 
 ## Privacy notes
 
